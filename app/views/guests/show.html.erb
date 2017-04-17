@@ -1,0 +1,12 @@
+<%= @guest.name %>
+<%= @guest.occupation %>
+<% @guest.appearances.each do |appearance| %>
+  <%= appearance.episode.date %>
+  <%= appearance.rating %>
+<% end %>
+
+<% if current_user %>
+  Signed in as <%= current_user.username %> | <%= link_to "Logout", '/logout' %>
+<% else %>
+  <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+<% end %>

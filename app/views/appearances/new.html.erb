@@ -1,0 +1,21 @@
+#THIS SHOULD REALLY BE
+
+
+<%= form_for(@guest) do |f| %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+
+    <div>
+      <% Appearance.all.each do |appearance| %>
+        <%= check_box_tag "guest[appearance_ids][]", appearance.id, f.object.appearances.include?(appearance) %>
+        <%= appearance.rating %>
+      <% end %>
+    </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

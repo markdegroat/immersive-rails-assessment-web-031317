@@ -1,0 +1,5 @@
+<%= "Episode #{@episode.number} - #{@episode.date.strftime("%B %d, %Y")}"%>
+<% @episode.appearances.each do |appearance| %>
+  <p><%= "Guest Name: #{appearance.guest.name} " %>
+  <%= "Rating is: #{appearance.rating} "%></p>
+<% end %>

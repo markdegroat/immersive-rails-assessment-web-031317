@@ -1,16 +1,15 @@
-class SessionsController < ApplicationController
+class UsersController < ApplicationController
 
   def new
   end
 
   def create
-    user = User.find_by(username: params[:session][:username])
-    #byebug
-    if user && user.authenticate(params[:session][:password])
+    user = User.new(user_params)
+    if user.save
       session[:user_id] = user.id
       redirect_to '/guests'
     else
-      redirect_to '/login'
+      redirect_to '/users/new'
     end
   end
 
